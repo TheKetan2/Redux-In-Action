@@ -1,17 +1,25 @@
 let _id = 1;
-
-export const uniquId = () => {
+export function uniqueId() {
   return _id++;
-};
+}
 
-export const createTask = ({ title, description }) => {
+export function createTask({ title, description }) {
   return {
-    type: "CREATE_TASK",
+    type: 'CREATE_TASK',
     payload: {
-      id: uniquId(),
+      id: uniqueId(),
       title,
       description,
-      status: "Unstarted"
     }
   };
-};
+}
+
+export function editTask(id, params = {}) {
+  return {
+    type: 'EDIT_TASK',
+    payload: {
+      id,
+      params
+    }
+  };
+}
